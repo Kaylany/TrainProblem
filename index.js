@@ -11,29 +11,47 @@ function sort_tickets(the_evidence) {
       Code your sorting function here and return the sorted tickets.
       By default it returns the unsorted stack.
     */
-    const the_goods = the_evidence
+    // const the_goods = the_evidence
 
-    let sortTickets = the_goods.sort((a, b) => (a.to = b.from) ? -1 : 0)
+    // let sortTickets = the_goods.sort((a, b) => (a.to = b.from) ? -1 : 0)
 
-    const finalCity = sortTickets[sortTickets.length - 1].to
+    // const finalCity = sortTickets[sortTickets.length - 1].to
 
-    console.log("Final City: " + finalCity)
+    // console.log("Final City: " + finalCity)
 
-    return sortTickets
+    // return sortTickets
+
+    // optimized solution; checking with hash map
+    // remember to practice debugging your solution
+    //const original_tickets = JSON.stringify(the_evidence)
+    const to_destination = {}
+    const from_destination = {}
+    for (const ticket of the_evidence) {
+      to_destination[ticket.to] = ticket
+      to_destination[ticket.from] = ticket
+    }
+
+    const from = Object.keys(from_destinations);
+    let starting_ticket = {}
+    for (const from of froms) {
+      if (!to_destinations[from]) {
+        starting_ticket = from_destinations[from];
+      }
+    }
+
+    const the_goods = [];
+    the_goods.push(starting_ticket);
+    let current_ticket = starting_ticket;
+    while (current_ticket && current_ticket.to) {
+      if (from_destination[current_ticket.to]) {
+        the_goods.push(from_destinations[current_ticket.to]);
+        current_ticket = from_destination[current_ticket.to];
+      }
+    }
+
+    console.log(the_goods);
     
-    // let array = [the_goods.shift()];
-    // console.log(array)
-
-    // while (the_goods.length) {
-    //   for (let i = 0; i < the_goods.length; i++) {
-    //     if (array[array.length - 1][1] === the_goods[i][0]) {
-    //       array.push(the_goods[i]);
-    //     } else if (array[0][0] === the_goods[i][1]) {
-    //       array.unshift(the_goods[i]);
-    //     }
-    //   }
-    //   return array
-    // }
+    return sortedTickets;
     
   
   }
